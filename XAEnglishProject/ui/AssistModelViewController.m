@@ -9,10 +9,11 @@
 #import "AssistModelViewController.h"
 #import "ModelCell.h"
 
-@interface AssistModelViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface AssistModelViewController ()<UICollectionViewDataSource, UICollectionViewDelegate,ModelCellDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 - (IBAction)finishButtonClick:(id)sender;
+@property (nonatomic, strong) NSMutableArray *addArray;
 
 
 @end
@@ -32,7 +33,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.addArray = [[NSMutableArray alloc] init];
+
     [self.collectionView registerNib:[UINib nibWithNibName:@"ModelCell" bundle:nil] forCellWithReuseIdentifier:@"ModelCell"];
     
     self.collectionView.delegate = self;
@@ -50,6 +52,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ModelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ModelCell" forIndexPath:indexPath];
+    cell.delegate = self;
     cell.selectButton.hidden = NO;
     cell.rightButtom.hidden = NO;
     [cell insertIntoData:self.dataArray[indexPath.row]];
@@ -72,10 +75,22 @@
 }
 
 
+- (void)cellSelectedOrNot:(BOOL)state modelId:(NSString *)modelId
+{
+    if (state) {
+        [self.addArray removeObject:modelId];
+    }
+    else {
+        [self.addArray addObject:modelId];
+        
+    }
+}
+
+
 - (void)modelArrayRequest
 {
     UrlRequest *request = [[UrlRequest alloc] init];
-    [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/module?type=1",HOST] delegate:self finishMethod:@"finishMethod:" failMethod:@"failMethod:"];
+    [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/module?type=1&book=1",HOST] delegate:self finishMethod:@"finishMethod:" failMethod:@"failMethod:"];
 }
 
 - (void)finishMethod:(NSData *)data
@@ -112,5 +127,22 @@
 */
 
 - (IBAction)finishButtonClick:(id)sender {
+    for (NSString *modelId in self.addArray) {
+        UrlRequest *request = [[UrlRequest alloc] init];
+        [request urlRequestWithPostUrl:[NSString stringWithFormat:@"%@/api/module/%@",HOST,modelId] delegate:self dict:@{@"client_id": self.clientId} finishMethod:@"finishAddMethod:" failMethod:@"failAddMethod:"];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)finishAddMethod:(NSData *)data
+{
+    
+}
+
+
+- (void)failAddMethod:(NSError *)error
+{
+    
+}
+
 @end

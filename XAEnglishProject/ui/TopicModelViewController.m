@@ -73,10 +73,11 @@
 - (void)cellSelectedOrNot:(BOOL)state modelId:(NSString *)modelId
 {
     if (state) {
-        [self.addArray addObject:modelId];
+        [self.addArray removeObject:modelId];
     }
     else {
-        [self.addArray removeObject:modelId];
+        [self.addArray addObject:modelId];
+
     }
 }
 
@@ -84,7 +85,8 @@
 - (void)modelArrayRequest
 {
     UrlRequest *request = [[UrlRequest alloc] init];
-    [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/module?type=0",HOST] delegate:self finishMethod:@"finishMethod:" failMethod:@"failMethod:"];
+    [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/module?type=0&book=1",HOST] delegate:self finishMethod:@"finishMethod:" failMethod:@"failMethod:"];
+    
 }
 
 - (void)finishMethod:(NSData *)data
@@ -122,8 +124,21 @@
 
 - (IBAction)finishButtonClick:(id)sender {
     
+    for (NSString *modelId in self.addArray) {
+        UrlRequest *request = [[UrlRequest alloc] init];
+        [request urlRequestWithPostUrl:[NSString stringWithFormat:@"%@/api/module/%@",HOST,modelId] delegate:self dict:@{@"client_id": self.clientId} finishMethod:@"finishAddMethod:" failMethod:@"failAddMethod:"];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)finishAddMethod:(NSData *)data
+{
     
-    
+}
+
+
+- (void)failAddMethod:(NSError *)error
+{
     
 }
 

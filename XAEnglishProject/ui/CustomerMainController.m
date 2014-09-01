@@ -10,9 +10,12 @@
 #import "ModelCell.h"
 #import "AddModelCell.h"
 #import "ModelListView.h"
+#import "TopicModelViewController.h"
+#import "AssistModelViewController.h"
+#import "DetailViewController.h"
 @interface CustomerMainController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong) NSString *selectModelTitle;
+@property (nonatomic, strong) NSIndexPath *selectIndexPath;
 @end
 
 @implementation CustomerMainController
@@ -39,6 +42,12 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self modelArrayRequest];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [_dataArray count]+1;
@@ -68,7 +77,7 @@
         [self addModel];
     }
     else {
-        self.selectModelTitle = [NSString stringWithFormat:@"第%d个model",indexPath.row];
+        self.selectIndexPath = indexPath;
         self.tabBarController.hidesBottomBarWhenPushed = YES;
         [self performSegueWithIdentifier:@"DetailViewController" sender:self];
     }
@@ -126,6 +135,18 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UIViewController *controller = segue.destinationViewController;
+    if ([controller isKindOfClass:[TopicModelViewController class]]) {
+        ((TopicModelViewController *) controller).clientId = [NSString stringWithFormat:@"%d",[self.customerDict[@"id"] integerValue]];
+    }
+    if ([controller isKindOfClass:[AssistModelViewController class]]) {
+        ((AssistModelViewController *) controller).clientId = [NSString stringWithFormat:@"%d",[self.customerDict[@"id"] integerValue]];
+    }
+    if ([controller isKindOfClass:[DetailViewController class]]) {
+        ((DetailViewController *) controller).modelArray = _dataArray;
+        ((DetailViewController *) controller).selectIndex = self.selectIndexPath.row;
+        ((DetailViewController *) controller).clientInfo = self.customerDict;
+
+    }
 }
 
 

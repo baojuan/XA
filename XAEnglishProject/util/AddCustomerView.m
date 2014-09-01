@@ -63,7 +63,7 @@
         return;
 
     }
-    NSString *saler_id = [[[NSUserDefaults standardUserDefaults] objectForKey:@"saler_info"] objectForKey:@"saler_id"];
+    NSString *saler_id = [NSString stringWithFormat:@"%d",[[[[NSUserDefaults standardUserDefaults] objectForKey:@"saler_info"] objectForKey:@"id"] integerValue]];
     
     NSDictionary *dict = @{@"name": self.customNameTextField.text,@"phone":self.phoneTextField.text,@"sex":(self.sexSegment.selectedSegmentIndex == 0 ? @"0":@"1"),@"saler_id": saler_id};
     

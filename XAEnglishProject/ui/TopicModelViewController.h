@@ -10,5 +10,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TopicModelViewController : UIViewController
+@property (nonatomic, strong) NSString *clientId;
 - (IBAction)finishButtonClick:(id)sender;
 @end

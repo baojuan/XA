@@ -12,11 +12,13 @@
 - (IBAction)cancelButtonClick:(id)sender;
 - (IBAction)uploadButtonClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *allUploadButton;
-- (IBAction)allUploadButtonClick:(id)sender;
+- (IBAction)allUploadButtonClick:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIButton *allDeleteButton;
+- (IBAction)allDeleteButtonClick:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editBarButton;
-- (IBAction)editBarButtonClick:(id)sender;
-
+- (IBAction)selectSegment:(UISegmentedControl *)sender;
+- (IBAction)editBarButtonClick:(UIButton *)sender;
 @end

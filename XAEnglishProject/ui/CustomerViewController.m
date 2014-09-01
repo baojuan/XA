@@ -34,6 +34,7 @@ static NSInteger const baseTag = 100;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.tabBarItem.selectedImage = [UIImage imageNamed:@"tab1_S"];
     }
     return self;
 }

@@ -41,4 +41,13 @@
 
 - (void)urlRequestWithDeleteUrl:(NSString *)url delegate:(id)delegate finishMethod:(NSString *)finishMethod failMethod:(NSString *)failMethod;
 
+
+- (void)urlRequestWithGetUrl:(NSString *)url delegate:(id)delegate finishBlock:(void(^)(NSData * data))successBlock failBlock:(void(^)(void))failBlock;
+
+
+- (void)urlRequestWithPostUrl:(NSString *)url delegate:(id)delegate dict:(NSDictionary *)dict finishBlock:(void(^)(NSData * data))successBlock failBlock:(void(^)(void))failBlock;
+
+- (void)urlRequestWithPostForRecordUrl:(NSString *)url delegate:(id)delegate dict:(NSDictionary *)dict finishBlock:(void (^)(NSData *))successBlock failBlock:(void (^)(void))failBlock;
+
+
 @end

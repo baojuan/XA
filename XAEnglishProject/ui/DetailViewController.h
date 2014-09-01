@@ -11,5 +11,7 @@
 
 @interface DetailViewController : UIViewController
 @property (nonatomic, strong)NSString *navigationTitle;
-
+@property (nonatomic, strong)NSArray *modelArray;
+@property (nonatomic, assign)NSInteger selectIndex;
+@property (nonatomic, strong) NSDictionary *clientInfo;
 @end

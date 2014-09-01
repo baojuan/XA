@@ -19,7 +19,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
+        self.tabBarItem.selectedImage = [UIImage imageNamed:@"tab2_S"];
+
     }
     return self;
 }
@@ -80,14 +81,37 @@
 - (IBAction)helpButtonClick:(id)sender {
 }
 
-- (IBAction)uploadButtonClick:(id)sender {
-    
-}
+
 - (IBAction)logoutButtonClick:(id)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"saler_info"];
 
     [self performSegueWithIdentifier:@"LogoutButtonClick" sender:self];
 }
+
+
+- (void)customerArrayRequest
+{
+    NSString *saler_id = [[[NSUserDefaults standardUserDefaults] objectForKey:@"saler_info"] objectForKey:@"id"];
+    
+    UrlRequest *request = [[UrlRequest alloc] init];
+    [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/user/saler?saler_id=%@",HOST,saler_id] delegate:self finishMethod:@"finishMethod:" failMethod:@"failMethod:"];
+}
+
+- (void)finishMethod:(NSData *)data
+{
+    NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    if ([dict[@"code"] intValue] == 0) {
+        
+        
+    }
+}
+
+- (void)failMethod:(NSError *)error
+{
+    
+}
+
 
 /*
  #pragma mark - Navigation

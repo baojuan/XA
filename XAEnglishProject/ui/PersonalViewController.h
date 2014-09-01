@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 - (IBAction)saleRecordButtonClick:(id)sender;
 - (IBAction)helpButtonClick:(id)sender;
-- (IBAction)myRecordButtonClick:(id)sender;
 - (IBAction)logoutButtonClick:(id)sender;
 
 @end

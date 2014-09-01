@@ -10,5 +10,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AssistModelViewController : UIViewController
+@property (nonatomic, strong) NSString *clientId;
 
 @end

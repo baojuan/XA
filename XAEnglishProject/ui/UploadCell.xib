@@ -24,6 +24,9 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <state key="selected" image="upload_cellButtonSelect.png"/>
+                        <connections>
+                            <action selector="rightButtonClick:" destination="Iw0-EF-8I3" eventType="touchUpInside" id="UXW-A7-Mzh"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mUe-cB-wLD">
                         <rect key="frame" x="0.0" y="0.0" width="325" height="87"/>
@@ -41,22 +44,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnK-fq-etc">
-                                <rect key="frame" x="206" y="9" width="20" height="20"/>
+                                <rect key="frame" x="206" y="9" width="12" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTn-WQ-36g">
-                                <rect key="frame" x="255" y="32" width="57" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="delete.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vai-Ab-T0a">
                                 <rect key="frame" x="255" y="32" width="57" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="upload.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="uploadButtonClick:" destination="Iw0-EF-8I3" eventType="touchUpInside" id="LwH-rW-FbY"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTn-WQ-36g">
+                                <rect key="frame" x="255" y="32" width="57" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="delete.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonClick:" destination="Iw0-EF-8I3" eventType="touchUpInside" id="mbx-rT-N1l"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="upload_record.png" translatesAutoresizingMaskIntoConstraints="NO" id="qfY-ai-kAd">
                                 <rect key="frame" x="95" y="42" width="30" height="30"/>
@@ -69,6 +78,16 @@
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgI-QX-Kqc">
+                                <rect key="frame" x="95" y="43" width="114" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playButtonClick:" destination="Iw0-EF-8I3" eventType="touchUpInside" id="hud-D2-rKd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -76,6 +95,15 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <size key="customSize" width="249" height="135"/>
+            <connections>
+                <outlet property="avatarImageView" destination="3y3-0g-0Ic" id="wWD-tR-HRp"/>
+                <outlet property="backView" destination="mUe-cB-wLD" id="5a1-lp-nQw"/>
+                <outlet property="deleteButton" destination="yTn-WQ-36g" id="rxx-8s-s3g"/>
+                <outlet property="rightButton" destination="fab-L2-7N9" id="45G-bb-MuC"/>
+                <outlet property="sexImageView" destination="wnK-fq-etc" id="Xeo-kn-q8i"/>
+                <outlet property="uploadButton" destination="vai-Ab-T0a" id="Lj6-yE-BJz"/>
+                <outlet property="userNameLabel" destination="guV-Us-Osf" id="S1h-l7-ofm"/>
+            </connections>
         </collectionViewCell>
     </objects>
     <resources>
