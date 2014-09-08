@@ -49,5 +49,8 @@
 
 - (void)urlRequestWithPostForRecordUrl:(NSString *)url delegate:(id)delegate dict:(NSDictionary *)dict finishBlock:(void (^)(NSData *))successBlock failBlock:(void (^)(void))failBlock;
 
+//put
+- (void)urlRequestWithPutUrl:(NSString *)url delegate:(id)delegate data:(NSData *)data finishBlock:(void(^)(NSData * data))successBlock failBlock:(void(^)(void))failBlock;
+
 
 @end

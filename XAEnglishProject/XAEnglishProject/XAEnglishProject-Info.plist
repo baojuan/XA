@@ -50,6 +50,13 @@
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UIViewEdgeAntialiasing</key>
+	<true/>
+	<key>UIViewGroupOpacity</key>
+	<true/>
 </dict>
 </plist>

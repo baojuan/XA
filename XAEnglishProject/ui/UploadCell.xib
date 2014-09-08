@@ -71,15 +71,15 @@
                                 <rect key="frame" x="95" y="42" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1小时31分25秒" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J25-CX-erz">
-                                <rect key="frame" x="129" y="48" width="93" height="20"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1911-08-01 11:11:11" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J25-CX-erz">
+                                <rect key="frame" x="129" y="48" width="118" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgI-QX-Kqc">
-                                <rect key="frame" x="95" y="43" width="114" height="30"/>
+                                <rect key="frame" x="95" y="43" width="152" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,6 +101,7 @@
                 <outlet property="deleteButton" destination="yTn-WQ-36g" id="rxx-8s-s3g"/>
                 <outlet property="rightButton" destination="fab-L2-7N9" id="45G-bb-MuC"/>
                 <outlet property="sexImageView" destination="wnK-fq-etc" id="Xeo-kn-q8i"/>
+                <outlet property="timeLabel" destination="J25-CX-erz" id="GNc-Kj-tJ7"/>
                 <outlet property="uploadButton" destination="vai-Ab-T0a" id="Lj6-yE-BJz"/>
                 <outlet property="userNameLabel" destination="guV-Us-Osf" id="S1h-l7-ofm"/>
             </connections>

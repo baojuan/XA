@@ -63,10 +63,22 @@
     
     self.avatar.image = aImage;
     [picker dismissModalViewControllerAnimated:YES];
-    
+    [self uploadAvatarImage];
 }
 
+- (void)uploadAvatarImage
+{
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"saler_info"];
 
+    UrlRequest *request = [[UrlRequest alloc] init];
+    [request urlRequestWithPutUrl:[NSString stringWithFormat:@"%@/api/user/saler/%@/image",HOST,dict[@"id"]] delegate:self data:UIImageJPEGRepresentation(self.avatar.image, 1.0) finishBlock:^(NSData *data) {
+        NSLog(@"%@",data);
+        NSDictionary *dd = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        [[NSUserDefaults standardUserDefaults] setObject:dd[@"data"] forKey:@"saler_info"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } failBlock:^{
+    }];
+}
 
 - (void)didReceiveMemoryWarning
 {

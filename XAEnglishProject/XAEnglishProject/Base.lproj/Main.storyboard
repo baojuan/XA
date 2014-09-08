@@ -147,7 +147,7 @@
                                         <rect key="frame" x="360" y="21" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="before.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="beforeButtonClick:" destination="4v2-va-Tj6" eventType="touchUpInside" id="ta8-DA-bpY"/>
@@ -156,9 +156,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="flf-uZ-KfQ">
                                         <rect key="frame" x="475" y="6" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="pause.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="Play.png">
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" image="pause.png"/>
                                         <connections>
                                             <action selector="playButtonClick:" destination="4v2-va-Tj6" eventType="touchUpInside" id="AgJ-AA-sf2"/>
                                         </connections>
@@ -167,7 +168,7 @@
                                         <rect key="frame" x="619" y="21" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="next.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="nextButtonClick:" destination="4v2-va-Tj6" eventType="touchUpInside" id="7pv-Ym-RVI"/>
@@ -190,7 +191,6 @@
                         <outlet property="beforeButton" destination="0z4-s6-Vec" id="SoJ-IR-JWP"/>
                         <outlet property="nextButton" destination="M81-tr-ld7" id="dqW-6T-h7D"/>
                         <outlet property="playButton" destination="flf-uZ-KfQ" id="Gsr-Gj-5VO"/>
-                        <outlet property="playButtonClick" destination="flf-uZ-KfQ" id="MkS-8l-Odp"/>
                         <outlet property="scrollView" destination="tdC-UR-JIb" id="azR-oF-TSB"/>
                     </connections>
                 </viewController>
@@ -407,7 +407,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="销售记录">
-                                    <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -419,8 +419,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="我的录音">
-                                    <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="0p2-10-s8w" kind="push" id="vkl-ga-PlG"/>
@@ -431,7 +431,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="使用指南">
-                                    <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -466,29 +466,17 @@
         <!--Login View Controller-->
         <scene sceneID="h8J-3O-EAm">
             <objects>
-                <viewController id="xTG-pT-7rG" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="xTG-pT-7rG" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="txa-xb-jLX">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person_background.png" id="YyS-97-Npn">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginbackground.png" id="YyS-97-Npn">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person_line.png" id="qjx-kd-zB6">
-                                <rect key="frame" x="325" y="361" width="352" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person_line.png" id="Km7-MY-eVH">
-                                <rect key="frame" x="325" y="414" width="352" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="log_avatar.png" id="TdY-ex-oDa">
-                                <rect key="frame" x="434" y="134" width="134" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="02c-gH-hzt">
-                                <rect key="frame" x="324" y="474" width="355" height="58"/>
+                                <rect key="frame" x="63" y="355" width="359" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="login.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -497,21 +485,25 @@
                                     <action selector="loginButtonClick:" destination="xTG-pT-7rG" eventType="touchUpInside" id="fSq-Bm-sp3"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogen.png" id="tzU-Cw-EOb">
-                                <rect key="frame" x="260" y="56" width="482" height="66"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xa.png" id="tzU-Cw-EOb">
+                                <rect key="frame" x="46" y="77" width="358" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入用户名" minimumFontSize="17" clearButtonMode="always" id="NfW-MM-5ca">
-                                <rect key="frame" x="325" y="331" width="352" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入用户名" minimumFontSize="17" background="loginBack.png" clearButtonMode="always" id="NfW-MM-5ca" customClass="MyTextField">
+                                <rect key="frame" x="63" y="224" width="359" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" clearButtonMode="always" id="tQL-Zv-dVi">
-                                <rect key="frame" x="325" y="385" width="352" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" background="loginBack.png" clearButtonMode="always" id="tQL-Zv-dVi" customClass="MyTextField">
+                                <rect key="frame" x="63" y="292" width="359" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -603,18 +595,20 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Play.png" width="74" height="74"/>
         <image name="addNavigationItem.png" width="18" height="18"/>
         <image name="before.png" width="45" height="45"/>
-        <image name="log_avatar.png" width="138" height="138"/>
         <image name="login.png" width="360" height="62"/>
+        <image name="loginBack.png" width="356" height="63"/>
+        <image name="loginbackground.png" width="1024" height="768"/>
         <image name="logout.png" width="360" height="64"/>
         <image name="next.png" width="45" height="45"/>
-        <image name="pause.png" width="75" height="75"/>
+        <image name="pause.png" width="74" height="74"/>
         <image name="person_avatar.png" width="138" height="138"/>
         <image name="person_background.png" width="1280" height="591"/>
         <image name="person_line.png" width="352" height="1"/>
-        <image name="slogen.png" width="481" height="66"/>
         <image name="tab1_S.png" width="19" height="14"/>
+        <image name="xa.png" width="358" height="111"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

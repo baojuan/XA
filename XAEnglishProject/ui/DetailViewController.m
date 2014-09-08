@@ -14,7 +14,7 @@
 
 
 
-@interface DetailViewController ()<AVAudioRecorderDelegate>
+@interface DetailViewController ()<AVAudioRecorderDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *beforeButton;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
@@ -47,8 +47,7 @@
     // Do any additional setup after loading the view.
     NSDictionary *dict = self.modelArray[self.selectIndex];
     self.navigationItem.title = dict[@"name"];
-    
-    
+    self.scrollView.delegate = self;
     [self addViews];
     
     
@@ -132,6 +131,11 @@
     self.scrollView.contentOffset = POINT(SCREEN_HEIGHT * self.selectIndex, 0);
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSDictionary *dict = self.modelArray[(int)(self.scrollView.contentOffset.x / self.scrollView.frame.size.width)];
+    self.title = dict[@"name"];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -171,10 +175,10 @@
         }
         else {
             NSString *saler_id = [[[NSUserDefaults standardUserDefaults] objectForKey:@"saler_info"] objectForKey:@"id"];
-            
-            NSString *recordName = [NSString stringWithFormat: @"%.0f.%@", [NSDate timeIntervalSinceReferenceDate] * 1000.0, @"caf"];
+            CGFloat date = [NSDate timeIntervalSinceReferenceDate];
+            NSString *recordName = [NSString stringWithFormat: @"%.0f.%@", date * 1000.0, @"caf"];
             NSMutableArray *array = [[NSMutableArray alloc] initWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"recordArray"]];
-            [array addObject:@{@"saler_id": saler_id,@"client_info":self.clientInfo,@"record":recordName}];
+            [array addObject:@{@"saler_id": saler_id,@"client_info":self.clientInfo,@"record":recordName,@"create_time":[NSString stringWithFormat: @"%.0f", date]}];
             
             [[NSUserDefaults standardUserDefaults] setObject:array forKey:@"recordArray"];
             

@@ -43,6 +43,13 @@
         self.sexImageView.image = [UIImage imageNamed:@"sex_f"];
     }
     self.userNameLabel.text = clientDict[@"name"];
+    
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:MM:ss"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[dict[@"create_time"] floatValue]];
+    
+    
+    self.timeLabel.text = [formatter stringFromDate:date];
     [self layoutSubviews];
 }
 
@@ -76,7 +83,7 @@
     NSData *data = [[NSData alloc] initWithContentsOfFile:fullPath];
         
     UrlRequest *request = [[UrlRequest alloc] init];
-    [request urlRequestWithPostForRecordUrl:[NSString stringWithFormat:@"%@/api/record",HOST] delegate:self dict:@{@"saler_id": [NSString stringWithFormat:@"%d",[recordInfo[@"saler_id"] integerValue]],@"client_id":recordInfo[@"client_info"][@"id"],@"record_data":data} finishBlock:^(NSData *data) {
+    [request urlRequestWithPostForRecordUrl:[NSString stringWithFormat:@"%@/api/record",HOST] delegate:self dict:@{@"record_data":data,@"saler_id": [NSString stringWithFormat:@"%ld",(long)[recordInfo[@"saler_id"] integerValue]],@"client_id":recordInfo[@"client_info"][@"id"]} finishBlock:^(NSData *data) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         [self.delegate deleteDict:recordInfo];
@@ -112,7 +119,16 @@
 }
 
 - (IBAction)deleteButtonClick:(id)sender {
-    [self.delegate deleteDict:recordInfo];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"删除录音" message:@"删除后将无法恢复，确定操作？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self.delegate deleteDict:recordInfo];
+    }
 }
 
 - (IBAction)playButtonClick:(UIButton *)sender {

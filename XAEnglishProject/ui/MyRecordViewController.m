@@ -84,12 +84,14 @@
     cell.isDelete = isDelete;
     if (self.segmentController.selectedSegmentIndex == 0) {
         cell.uploadButton.hidden = NO;
+        [cell insertIntoData:_dataArray[indexPath.row]];
 
     }
     else {
         cell.uploadButton.hidden = YES;
+        [cell insertIntoData:_uploadedRecordArray[indexPath.row]];
+
     }
-    [cell insertIntoData:_dataArray[indexPath.row]];
     return cell;
 }
 
@@ -127,6 +129,7 @@
         UrlRequest *request = [[UrlRequest alloc] init];
         [request urlRequestWithPostForRecordUrl:[NSString stringWithFormat:@"%@/api/record",HOST] delegate:self dict:@{@"saler_id": [NSString stringWithFormat:@"%d",[recordInfo[@"saler_id"] integerValue]],@"record_data":data,@"client_id":recordInfo[@"client_info"][@"id"]} finishBlock:^(NSData *data) {
             [self deleteDict:recordInfo];
+            [self requestRecordArray];
         } failBlock:^{
             ;
         }];
@@ -213,7 +216,7 @@
     UrlRequest *request = [[UrlRequest alloc] init];
     [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/record?saler_id=%@",HOST,saler_id] delegate:self finishBlock:^(NSData *data) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        [_uploadedRecordArray addObject:dict[@"data"]];
+        [_uploadedRecordArray addObjectsFromArray:dict[@"data"]];
         [self.collectionView reloadData];
     } failBlock:^{
         ;

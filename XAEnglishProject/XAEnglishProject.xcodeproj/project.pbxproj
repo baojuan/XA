@@ -72,6 +72,10 @@
 		BF267E181993D81600B3DFC3 /* seg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF267E171993D81600B3DFC3 /* seg2@2x.png */; };
 		BF267E1B1993D8C600B3DFC3 /* addButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF267E191993D8C600B3DFC3 /* addButton@2x.png */; };
 		BF267E1C1993D8C600B3DFC3 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF267E1A1993D8C600B3DFC3 /* cancel@2x.png */; };
+		BF44E0F919BB59AC002A3018 /* loginBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF44E0F619BB59AC002A3018 /* loginBack@2x.png */; };
+		BF44E0FA19BB59AC002A3018 /* loginbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF44E0F719BB59AC002A3018 /* loginbackground@2x.png */; };
+		BF44E0FB19BB59AC002A3018 /* xa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF44E0F819BB59AC002A3018 /* xa@2x.png */; };
+		BF44E0FE19BB5CD6002A3018 /* MyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44E0FD19BB5CD6002A3018 /* MyTextField.m */; };
 		BF7E808B19AA09EF003168B7 /* upload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7E808A19AA09EF003168B7 /* upload@2x.png */; };
 		BF7E808E19ACC357003168B7 /* sex_f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7E808C19ACC357003168B7 /* sex_f@2x.png */; };
 		BF7E808F19ACC357003168B7 /* sex_m@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7E808D19ACC357003168B7 /* sex_m@2x.png */; };
@@ -160,6 +164,11 @@
 		BFC81CDD198E94CB00AA2B3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC81CBC198E94CB00AA2B3E /* UIKit.framework */; };
 		BFC81CE5198E94CB00AA2B3E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFC81CE3198E94CB00AA2B3E /* InfoPlist.strings */; };
 		BFC81CE7198E94CB00AA2B3E /* XAEnglishProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC81CE6198E94CB00AA2B3E /* XAEnglishProjectTests.m */; };
+		BFE7EB1619BDF4CB00E99DFD /* before.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE7EB1119BDF4CB00E99DFD /* before.png */; };
+		BFE7EB1719BDF4CB00E99DFD /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE7EB1219BDF4CB00E99DFD /* next.png */; };
+		BFE7EB1819BDF4CB00E99DFD /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE7EB1319BDF4CB00E99DFD /* pause.png */; };
+		BFE7EB1919BDF4CB00E99DFD /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE7EB1419BDF4CB00E99DFD /* Play.png */; };
+		BFE7EB1A19BDF4CB00E99DFD /* Play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE7EB1519BDF4CB00E99DFD /* Play@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +300,11 @@
 		BF267E171993D81600B3DFC3 /* seg2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seg2@2x.png"; sourceTree = "<group>"; };
 		BF267E191993D8C600B3DFC3 /* addButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addButton@2x.png"; sourceTree = "<group>"; };
 		BF267E1A1993D8C600B3DFC3 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
+		BF44E0F619BB59AC002A3018 /* loginBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBack@2x.png"; sourceTree = "<group>"; };
+		BF44E0F719BB59AC002A3018 /* loginbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginbackground@2x.png"; sourceTree = "<group>"; };
+		BF44E0F819BB59AC002A3018 /* xa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xa@2x.png"; sourceTree = "<group>"; };
+		BF44E0FC19BB5CD6002A3018 /* MyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextField.h; sourceTree = "<group>"; };
+		BF44E0FD19BB5CD6002A3018 /* MyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextField.m; sourceTree = "<group>"; };
 		BF7E808A19AA09EF003168B7 /* upload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload@2x.png"; sourceTree = "<group>"; };
 		BF7E808C19ACC357003168B7 /* sex_f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sex_f@2x.png"; sourceTree = "<group>"; };
 		BF7E808D19ACC357003168B7 /* sex_m@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sex_m@2x.png"; sourceTree = "<group>"; };
@@ -431,6 +445,11 @@
 		BFC81CE2198E94CB00AA2B3E /* XAEnglishProjectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XAEnglishProjectTests-Info.plist"; sourceTree = "<group>"; };
 		BFC81CE4198E94CB00AA2B3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFC81CE6198E94CB00AA2B3E /* XAEnglishProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XAEnglishProjectTests.m; sourceTree = "<group>"; };
+		BFE7EB1119BDF4CB00E99DFD /* before.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = before.png; sourceTree = "<group>"; };
+		BFE7EB1219BDF4CB00E99DFD /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
+		BFE7EB1319BDF4CB00E99DFD /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		BFE7EB1419BDF4CB00E99DFD /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
+		BFE7EB1519BDF4CB00E99DFD /* Play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Play@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -588,6 +607,7 @@
 		BF267DDC1991272B00B3DFC3 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				BF44E0F519BB59AC002A3018 /* login */,
 				BF267E071993C9FA00B3DFC3 /* view */,
 				BF267DDD1991272B00B3DFC3 /* tab */,
 			);
@@ -673,6 +693,8 @@
 				BF25C78B19B38C2500CB07D8 /* VideoPlay.m */,
 				BF25C79119B4AB0800CB07D8 /* RecordPlay.h */,
 				BF25C79219B4AB0800CB07D8 /* RecordPlay.m */,
+				BF44E0FC19BB5CD6002A3018 /* MyTextField.h */,
+				BF44E0FD19BB5CD6002A3018 /* MyTextField.m */,
 			);
 			path = util;
 			sourceTree = SOURCE_ROOT;
@@ -704,6 +726,11 @@
 		BF267E071993C9FA00B3DFC3 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BFE7EB1119BDF4CB00E99DFD /* before.png */,
+				BFE7EB1219BDF4CB00E99DFD /* next.png */,
+				BFE7EB1319BDF4CB00E99DFD /* pause.png */,
+				BFE7EB1419BDF4CB00E99DFD /* Play.png */,
+				BFE7EB1519BDF4CB00E99DFD /* Play@2x.png */,
 				BF7E808C19ACC357003168B7 /* sex_f@2x.png */,
 				BF7E808D19ACC357003168B7 /* sex_m@2x.png */,
 				BF7E808A19AA09EF003168B7 /* upload@2x.png */,
@@ -739,6 +766,17 @@
 				BF267E081993C9FA00B3DFC3 /* addCustomer@2x.png */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		BF44E0F519BB59AC002A3018 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				BF44E0F619BB59AC002A3018 /* loginBack@2x.png */,
+				BF44E0F719BB59AC002A3018 /* loginbackground@2x.png */,
+				BF44E0F819BB59AC002A3018 /* xa@2x.png */,
+			);
+			name = login;
+			path = view/login;
 			sourceTree = "<group>";
 		};
 		BFC0069919A0639A0048B7D8 /* AFNetworking */ = {
@@ -987,6 +1025,7 @@
 				BFAF6B4C19990FCF0099AEE5 /* AddModelCell.xib in Resources */,
 				BF267E101993D28D00B3DFC3 /* AddCustomerView.xib in Resources */,
 				BF267E161993D77E00B3DFC3 /* segBackground@2x.png in Resources */,
+				BFE7EB1619BDF4CB00E99DFD /* before.png in Resources */,
 				BFC0070B19A256FD0048B7D8 /* UploadCell.xib in Resources */,
 				BF267DE41991272B00B3DFC3 /* tab1_S@2x.png in Resources */,
 				BFC00656199CEC060048B7D8 /* tab2_S@2x.png in Resources */,
@@ -995,6 +1034,7 @@
 				BF267E121993D56000B3DFC3 /* addAvatar@2x.png in Resources */,
 				BFC81CD4198E94CB00AA2B3E /* Images.xcassets in Resources */,
 				BF09853419B239CE00A1A3FD /* VideoForModel.xib in Resources */,
+				BFE7EB1919BDF4CB00E99DFD /* Play.png in Resources */,
 				BFAF6B59199915A20099AEE5 /* line@2x.png in Resources */,
 				BFC0065D199CEC130048B7D8 /* person_line@2x.png in Resources */,
 				BFC0070019A064070048B7D8 /* MBProgressHUD.bundle in Resources */,
@@ -1014,19 +1054,24 @@
 				BFAF6B471999098E0099AEE5 /* ModelCell.xib in Resources */,
 				BFAF6B62199927070099AEE5 /* delete@2x.png in Resources */,
 				BF267E181993D81600B3DFC3 /* seg2@2x.png in Resources */,
+				BFE7EB1819BDF4CB00E99DFD /* pause.png in Resources */,
 				BFAF6B4E199911640099AEE5 /* addModel@2x.png in Resources */,
 				BFC00650199BC8720048B7D8 /* right_normal@2x.png in Resources */,
 				BFC00649199BAC640048B7D8 /* before@2x.png in Resources */,
 				BF267DFD199138F000B3DFC3 /* tab2@2x.png in Resources */,
 				BFC00660199CEF290048B7D8 /* person_avatar@2x.png in Resources */,
+				BF44E0FA19BB59AC002A3018 /* loginbackground@2x.png in Resources */,
 				BF267E1B1993D8C600B3DFC3 /* addButton@2x.png in Resources */,
 				BFC00668199CF8750048B7D8 /* login@2x.png in Resources */,
 				BFC81CCC198E94CB00AA2B3E /* Main.storyboard in Resources */,
 				BF7E808E19ACC357003168B7 /* sex_f@2x.png in Resources */,
+				BFE7EB1719BDF4CB00E99DFD /* next.png in Resources */,
 				BF09853219B239C000A1A3FD /* ScrollViewForModel.xib in Resources */,
 				BF267E141993D6D100B3DFC3 /* seg1@2x.png in Resources */,
 				BF267E0B1993CB7100B3DFC3 /* customerBackground@2x.png in Resources */,
+				BFE7EB1A19BDF4CB00E99DFD /* Play@2x.png in Resources */,
 				BFC0064A199BAC640048B7D8 /* next@2x.png in Resources */,
+				BF44E0FB19BB59AC002A3018 /* xa@2x.png in Resources */,
 				BFC00669199CF8750048B7D8 /* slogen@2x.png in Resources */,
 				BF267DF819912CED00B3DFC3 /* CustomerCell.xib in Resources */,
 				BF7E808B19AA09EF003168B7 /* upload@2x.png in Resources */,
@@ -1034,6 +1079,7 @@
 				BFAF6B531999139B0099AEE5 /* ModelListView.xib in Resources */,
 				BF267E061993C98500B3DFC3 /* AddCell.xib in Resources */,
 				BFC0064B199BAC640048B7D8 /* pause@2x.png in Resources */,
+				BF44E0F919BB59AC002A3018 /* loginBack@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1105,6 +1151,7 @@
 				BFC006EF19A063EB0048B7D8 /* SDWebImageDownloaderOperation.m in Sources */,
 				BFC006B919A0639B0048B7D8 /* AFHTTPRequestOperationManager.m in Sources */,
 				BF25C77F19B38A8B00CB07D8 /* HTTPDataResponse.m in Sources */,
+				BF44E0FE19BB5CD6002A3018 /* MyTextField.m in Sources */,
 				BFC00663199CF7E60048B7D8 /* LoginViewController.m in Sources */,
 				BFC006F619A063EB0048B7D8 /* UIImage+WebP.m in Sources */,
 				BFC006EC19A063EB0048B7D8 /* SDWebImageCompat.m in Sources */,

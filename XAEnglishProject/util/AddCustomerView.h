@@ -15,7 +15,7 @@
 @end
 
 
-@interface AddCustomerView : UIView
+@interface AddCustomerView : UIView<UITextFieldDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) id <AddCustomerViewDelegate>delegate;
 @property (weak, nonatomic) IBOutlet UIView *coverView;
 @property (weak, nonatomic) IBOutlet UIView *addView;

@@ -17,7 +17,10 @@
 @end
 
 @implementation TopicModelViewController
-
+{
+    int postSuccess;
+    int finishPost;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,6 +34,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    postSuccess = 0;
+    finishPost = 0;
     self.addArray = [[NSMutableArray alloc] init];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ModelCell" bundle:nil] forCellWithReuseIdentifier:@"ModelCell"];
     
@@ -85,7 +90,7 @@
 - (void)modelArrayRequest
 {
     UrlRequest *request = [[UrlRequest alloc] init];
-    [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/module?type=0&book=1",HOST] delegate:self finishMethod:@"finishMethod:" failMethod:@"failMethod:"];
+    [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/module?type=0&book=1&client_id=%@",HOST,self.clientId] delegate:self finishMethod:@"finishMethod:" failMethod:@"failMethod:"];
     
 }
 
@@ -128,17 +133,31 @@
         UrlRequest *request = [[UrlRequest alloc] init];
         [request urlRequestWithPostUrl:[NSString stringWithFormat:@"%@/api/module/%@",HOST,modelId] delegate:self dict:@{@"client_id": self.clientId} finishMethod:@"finishAddMethod:" failMethod:@"failAddMethod:"];
     }
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)finishAddMethod:(NSData *)data
 {
+    postSuccess ++;
+    finishPost ++;
+    if (postSuccess == [self.addArray count]) {
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
     
 }
 
 
 - (void)failAddMethod:(NSError *)error
 {
+    finishPost ++;
+    if (postSuccess != [self.addArray count] && finishPost == [self.addArray count]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"网络有问题请重试";
+        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay:1];
+    }
+    
     
 }
 

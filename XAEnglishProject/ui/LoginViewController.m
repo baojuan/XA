@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -29,7 +29,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.userTextField.delegate = self;
+    self.passwordTextField.delegate = self;
 
 }
 
@@ -43,8 +44,17 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.userTextField resignFirstResponder];
-    [self.passwordTextField resignFirstResponder];
+    if (textField == self.userTextField) {
+        [self.userTextField resignFirstResponder];
+        [self.passwordTextField becomeFirstResponder];
+
+    }
+    if (textField == self.passwordTextField) {
+        [self.userTextField resignFirstResponder];
+        [self.passwordTextField resignFirstResponder];
+        [self loginButtonClick:self.loginButton];
+        
+    }
     return YES;
 }
 

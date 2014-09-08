@@ -18,7 +18,7 @@
 
 @end
 
-@interface UploadCell : UICollectionViewCell
+@interface UploadCell : UICollectionViewCell<UIAlertViewDelegate>
 @property (weak, nonatomic) id<UploadCellDelegate>delegate;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
 - (IBAction)rightButtonClick:(UIButton *)sender;
@@ -33,6 +33,7 @@
 - (IBAction)playButtonClick:(UIButton *)sender;
 - (void)insertIntoData:(NSDictionary *)dict;
 @property (nonatomic, assign) BOOL uploadAll;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (nonatomic, assign) BOOL isDelete;
 
 @end

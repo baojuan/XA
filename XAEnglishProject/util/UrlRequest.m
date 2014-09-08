@@ -277,6 +277,35 @@
 }
 
 
+- (void)urlRequestWithPutUrl:(NSString *)url delegate:(id)delegate data:(NSData *)data finishBlock:(void(^)(NSData * data))successBlock failBlock:(void(^)(void))failBlock;
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"PUT"];
+    [request setHTTPBody:data];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+        if ([operation.response statusCode] == 200)
+        {
+            if (successBlock) {
+                successBlock(operation.responseData);
+            }
+        }
+        else {
+            if (failBlock) {
+                failBlock();
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error:%@",error);
+        if (failBlock) {
+            failBlock();
+        }
+    }];
+    [operation start];
+}
+
+
 
 
 @end

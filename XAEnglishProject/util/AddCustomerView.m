@@ -7,6 +7,7 @@
 //
 
 #import "AddCustomerView.h"
+#import "XAImagePickerController.h"
 
 @implementation AddCustomerView
 
@@ -28,7 +29,49 @@
     self.backgroundColor = [UIColor clearColor];
     UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
     [self.coverView addGestureRecognizer:ges];
+    self.customNameTextField.delegate = self;
+    self.phoneTextField.delegate = self;
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPicker)];
+    [self.avatarImageView addGestureRecognizer:tap];
+    self.avatarImageView.userInteractionEnabled = YES;
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.customNameTextField) {
+        [self.customNameTextField resignFirstResponder];
+        [self.phoneTextField becomeFirstResponder];
+    }
+    if (textField == self.phoneTextField) {
+        [self.customNameTextField resignFirstResponder];
+        [self.phoneTextField resignFirstResponder];
+        [self addButtonClick:self.addButton];
+    }
+    return YES;
+}
+
+- (void)showPicker
+{
+	XAImagePickerController *picker = [[XAImagePickerController alloc] init];
+	picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+	picker.delegate = self;
+	[((UIViewController *)self.delegate) presentViewController:picker animated:YES completion:^{
+        ;
+    }];
+	
+}
+
+#pragma mark delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)aImage editingInfo:(NSDictionary *)editingInfo
+{
+    
+    self.avatarImageView.image = aImage;
+    [picker dismissModalViewControllerAnimated:YES];
+}
+
+
 
 - (void)tapClick
 {
@@ -75,12 +118,31 @@
     [request urlRequestWithPostUrl:[NSString stringWithFormat:@"%@/api/user/client",HOST] delegate:self dict:dict finishMethod:@"finishMethod:" failMethod:@"failMethod:"];
 }
 
+
+- (void)uploadAvatarImage:(NSString *)client_id
+{
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"saler_info"];
+    
+    UrlRequest *request = [[UrlRequest alloc] init];
+    [request urlRequestWithPutUrl:[NSString stringWithFormat:@"%@/api/user/client/%@/image",HOST,client_id] delegate:self data:UIImageJPEGRepresentation(self.avatarImageView.image, 1.0) finishBlock:^(NSData *data) {
+        NSLog(@"%@",data);
+        NSDictionary *dd = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        [self.delegate addCustomerSuccess];
+
+    } failBlock:^{
+        [self.delegate addCustomerSuccess];
+
+    }];
+}
+
+
 - (void)finishMethod:(NSData *)data
 {
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     NSLog(@"%@",dict[@"msg"]);
     [self removeFromSuperview];
-    [self.delegate addCustomerSuccess];
+    [self uploadAvatarImage:dict[@"data"][@"client_id"]];
+
 }
 
 - (void)failMethod:(NSError *)error
