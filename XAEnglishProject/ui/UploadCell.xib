@@ -36,7 +36,7 @@
                                 <rect key="frame" x="15" y="8" width="72" height="72"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guV-Us-Osf">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="未知用户" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guV-Us-Osf">
                                 <rect key="frame" x="102" y="8" width="119" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -99,6 +99,7 @@
                 <outlet property="avatarImageView" destination="3y3-0g-0Ic" id="wWD-tR-HRp"/>
                 <outlet property="backView" destination="mUe-cB-wLD" id="5a1-lp-nQw"/>
                 <outlet property="deleteButton" destination="yTn-WQ-36g" id="rxx-8s-s3g"/>
+                <outlet property="playImageView" destination="qfY-ai-kAd" id="pe0-f0-Sxd"/>
                 <outlet property="rightButton" destination="fab-L2-7N9" id="45G-bb-MuC"/>
                 <outlet property="sexImageView" destination="wnK-fq-etc" id="Xeo-kn-q8i"/>
                 <outlet property="timeLabel" destination="J25-CX-erz" id="GNc-Kj-tJ7"/>

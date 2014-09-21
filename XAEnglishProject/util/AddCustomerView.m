@@ -10,6 +10,9 @@
 #import "XAImagePickerController.h"
 
 @implementation AddCustomerView
+{
+    BOOL image;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -66,7 +69,7 @@
 #pragma mark delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)aImage editingInfo:(NSDictionary *)editingInfo
 {
-    
+    image = YES;
     self.avatarImageView.image = aImage;
     [picker dismissModalViewControllerAnimated:YES];
 }
@@ -141,7 +144,14 @@
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     NSLog(@"%@",dict[@"msg"]);
     [self removeFromSuperview];
-    [self uploadAvatarImage:dict[@"data"][@"client_id"]];
+    if (image == YES) {
+        [self uploadAvatarImage:dict[@"data"][@"id"]];
+
+    }
+    else {
+        [self.delegate addCustomerSuccess];
+
+    }
 
 }
 

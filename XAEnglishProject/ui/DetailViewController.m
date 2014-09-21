@@ -11,7 +11,7 @@
 #import "ImageForModel.h"
 #import "ScrollViewForModel.h"
 #import "VideoForModel.h"
-
+#import "PriceForModel.h"
 
 
 @interface DetailViewController ()<AVAudioRecorderDelegate,UIScrollViewDelegate>
@@ -30,6 +30,7 @@
 {
     NSURL *recordedTmpFile;
     AVAudioRecorder *recorder;
+    NSMutableArray *viewArray;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,6 +38,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        viewArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -80,13 +82,15 @@
 
 - (void)addViews
 {
-    [self.scrollView setContentSize:SIZE(SCREEN_HEIGHT * [self.modelArray count], 609)];
+    CGFloat width = MAX(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+    [self.scrollView setContentSize:SIZE(width * [self.modelArray count], 609)];
 
     for (int i = 0; i < [self.modelArray count]; i ++) {
         NSDictionary *dict = self.modelArray[i];
         if ([[dict objectForKey:@"content_type"] isEqualToString:@"single_pic"]) {
             ImageForModel *imageView = [[[NSBundle mainBundle] loadNibNamed:@"ImageForPad" owner:self options:nil] lastObject];
-            imageView.frame = RECT(SCREEN_HEIGHT * (i) + (SCREEN_HEIGHT - imageView.frame.size.width) / 2.0, 255, imageView.frame.size.width, imageView.frame.size.height);
+            [viewArray addObject:imageView];
+            imageView.frame = RECT(width * (i) + (width - imageView.frame.size.width) / 2.0, 0, imageView.frame.size.width, imageView.frame.size.height);
             UrlRequest *request = [[UrlRequest alloc] init];
 
             [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/module/%@",HOST,dict[@"id"]] delegate:self finishBlock:^(NSData *data) {
@@ -100,12 +104,13 @@
         }
         if ([[dict objectForKey:@"content_type"] isEqualToString:@"multi_pic"]) {
             ScrollViewForModel *scrollView = [[[NSBundle mainBundle] loadNibNamed:@"ScrollViewForModel" owner:self options:nil] lastObject];
-            scrollView.frame = RECT(SCREEN_HEIGHT * (i) + (SCREEN_HEIGHT - scrollView.frame.size.width) / 2.0, 0, scrollView.frame.size.width, scrollView.frame.size.height);
+            [viewArray addObject:scrollView];
+            scrollView.frame = RECT(width * (i) + (width - scrollView.frame.size.width) / 2.0, 0, scrollView.frame.size.width, scrollView.frame.size.height);
             UrlRequest *request = [[UrlRequest alloc] init];
 
             [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/module/%@",HOST,dict[@"id"]] delegate:self finishBlock:^(NSData *data){
                 NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                scrollView.frame = RECT(SCREEN_HEIGHT * (i) + (SCREEN_HEIGHT - 1000) / 2.0, 10, 1000, 609);
+                scrollView.frame = RECT(self.scrollView.contentSize.width * (i) + (self.scrollView.contentSize.width - 1000) / 2.0, 10, 1000, 609);
                 [scrollView insertIntoData:dict[@"data"]];
             } failBlock:^{
                 ;
@@ -114,7 +119,8 @@
         }
         if ([[dict objectForKey:@"content_type"] isEqualToString:@"video_text"]) {
             VideoForModel *videoView = [[[NSBundle mainBundle] loadNibNamed:@"VideoForModel" owner:self options:nil] lastObject];
-            videoView.frame = RECT(SCREEN_HEIGHT * (i) + (SCREEN_HEIGHT - videoView.frame.size.width) / 2.0, 0, videoView.frame.size.width, videoView.frame.size.height);
+            [viewArray addObject:videoView];
+            videoView.frame = RECT(width * (i) + (width - videoView.frame.size.width) / 2.0, 0, videoView.frame.size.width, videoView.frame.size.height);
             UrlRequest *request = [[UrlRequest alloc] init];
 
             [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/module/%@",HOST,dict[@"id"]] delegate:self finishBlock:^(NSData *data){
@@ -126,9 +132,24 @@
             }];
             [self.scrollView addSubview:videoView];
         }
+        if ([[dict objectForKey:@"content_type"] isEqualToString:@"price"]) {
+            PriceForModel *priceView = [[PriceForModel alloc] init];
+            [viewArray addObject:priceView];
+            priceView.frame = RECT(width * (i) + (width - priceView.frame.size.width) / 2.0, 100, priceView.frame.size.width, priceView.frame.size.height);
+            UrlRequest *request = [[UrlRequest alloc] init];
+            
+            [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/price",HOST] delegate:self finishBlock:^(NSData *data) {
+                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                [priceView insertIntoData:dict[@"data"]];
+                
+            } failBlock:^{
+                ;
+            }];
+            [self.scrollView addSubview:priceView];
+        }
 
     }
-    self.scrollView.contentOffset = POINT(SCREEN_HEIGHT * self.selectIndex, 0);
+    self.scrollView.contentOffset = POINT(width * self.selectIndex, 0);
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -225,4 +246,13 @@
     self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + SCREEN_HEIGHT, self.scrollView.contentOffset.y);
 
 }
+
+
+- (void)videoFinished:(NSNotification *)notification
+{
+    VideoForModel *model = ((VideoForModel *)(viewArray[(int)(self.scrollView.contentOffset.x / self.scrollView.frame.size.width)])) ;
+    [model.play videoFinish];
+}
+
+
 @end

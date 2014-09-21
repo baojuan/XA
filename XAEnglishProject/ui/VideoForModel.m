@@ -7,7 +7,6 @@
 //
 
 #import "VideoForModel.h"
-#import "VideoPlay.h"
 @implementation VideoForModel
 {
     NSString *video;
@@ -45,8 +44,8 @@
 
 - (void)tapGes
 {
-    VideoPlay *play = [[VideoPlay alloc] initWithDelegate:_delegate name:self.title1.text url:video];
-    [play videoPlay];
+    self.play = [[VideoPlay alloc] initWithDelegate:_delegate name:self.title1.text url:video];
+    [self.play videoPlay];
 }
 
 - (void)layoutSubviews

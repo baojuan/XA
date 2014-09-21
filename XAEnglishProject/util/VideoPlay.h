@@ -12,5 +12,6 @@
 - (id)initWithDelegate:(UIViewController *)delegate name:(NSString *)name url:(NSString *)url;
 
 - (void)videoPlay;
+- (void)videoFinish;
 
 @end

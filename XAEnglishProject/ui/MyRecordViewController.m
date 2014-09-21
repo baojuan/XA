@@ -39,6 +39,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.uploadButton.hidden = YES;
+    self.cancelButton.hidden = YES;
+    self.allUploadButton.hidden = YES;
+    
     _dataArray = [[NSMutableArray alloc] init];
     uploadAll = NO;
     isDelete = NO;
@@ -51,6 +55,14 @@
             [_dataArray addObject:dict];
         }
     }
+    
+    if ([_dataArray count] > 0) {
+        self.uploadButton.hidden = YES;
+        self.allUploadButton.hidden = NO;
+        self.cancelButton.hidden = YES;
+    }
+    
+    
     [self requestRecordArray];
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 10, 0, 10);
     self.collectionView.delegate = self;
@@ -110,6 +122,18 @@
 - (void)deleteDict:(NSDictionary *)dict
 {
     [_dataArray removeObject:dict];
+    if ([_dataArray count] > 0) {
+        self.uploadButton.hidden = YES;
+        self.allUploadButton.hidden = NO;
+        self.cancelButton.hidden = YES;
+    }
+    else {
+        self.uploadButton.hidden = YES;
+        self.allUploadButton.hidden = YES;
+        self.cancelButton.hidden = YES;
+
+    }
+    [self requestRecordArray];
     [self.collectionView reloadData];
 }
 - (IBAction)cancelButtonClick:(id)sender {
@@ -118,6 +142,12 @@
 
 - (IBAction)uploadButtonClick:(id)sender {
     
+    MBProgressHUD *hhud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    hhud.mode = MBProgressHUDModeText;
+    hhud.labelText = @"批量上传中，请稍后";
+    hhud.removeFromSuperViewOnHide = YES;
+    int count = [self.uploadArray count];
+    __block int i = 0;
     for (NSDictionary *recordInfo in self.uploadArray) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);//获得存储路径，
         NSString *documentDirectory = [paths objectAtIndex:0];//获得路径的第0个元素
@@ -127,11 +157,21 @@
         NSData *data = [[NSData alloc] initWithContentsOfFile:fullPath];
         
         UrlRequest *request = [[UrlRequest alloc] init];
-        [request urlRequestWithPostForRecordUrl:[NSString stringWithFormat:@"%@/api/record",HOST] delegate:self dict:@{@"saler_id": [NSString stringWithFormat:@"%d",[recordInfo[@"saler_id"] integerValue]],@"record_data":data,@"client_id":recordInfo[@"client_info"][@"id"]} finishBlock:^(NSData *data) {
+        [request urlRequestWithPostForRecordUrl:[NSString stringWithFormat:@"%@/api/record",HOST] delegate:self dict:@{@"saler_id": [NSString stringWithFormat:@"%ld",(long)[recordInfo[@"saler_id"] integerValue]],@"record_data":data,@"client_id":recordInfo[@"client_info"][@"id"]} finishBlock:^(NSData *data) {
+            i ++;
+            if (i == count) {
+                [hhud hide:YES afterDelay:1];
+
+            }
             [self deleteDict:recordInfo];
             [self requestRecordArray];
         } failBlock:^{
-            ;
+            [hhud hide:YES afterDelay:0];
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"录音上传失败";
+            hud.removeFromSuperViewOnHide = YES;
+            [hud hide:YES afterDelay:1];
         }];
 
     }
@@ -156,6 +196,29 @@
     sender.selected = !sender.selected;
 }
 - (IBAction)selectSegment:(UISegmentedControl *)sender {
+    if ([self.editBarButton.title isEqualToString:@"完成"]) {
+        [self editBarButtonClick:self.editBarButton];
+    }
+    if (sender.selectedSegmentIndex == 1) {
+        self.uploadButton.hidden = YES;
+        self.cancelButton.hidden = YES;
+        self.allUploadButton.hidden = YES;
+    }
+    else {
+        if ([_dataArray count] > 0) {
+            self.uploadButton.hidden = YES;
+            self.allUploadButton.hidden = NO;
+            self.cancelButton.hidden = YES;
+        }
+        else {
+            self.uploadButton.hidden = YES;
+            self.allUploadButton.hidden = YES;
+            self.cancelButton.hidden = YES;
+            
+        }
+
+        
+    }
     [self.collectionView reloadData];
 }
 
@@ -216,7 +279,9 @@
     UrlRequest *request = [[UrlRequest alloc] init];
     [request urlRequestWithGetUrl:[NSString stringWithFormat:@"%@/api/record?saler_id=%@",HOST,saler_id] delegate:self finishBlock:^(NSData *data) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        [_uploadedRecordArray removeAllObjects];
         [_uploadedRecordArray addObjectsFromArray:dict[@"data"]];
+        
         [self.collectionView reloadData];
     } failBlock:^{
         ;

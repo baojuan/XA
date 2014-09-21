@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VideoPlay.h"
 
 @interface VideoForModel : UIScrollView
 - (void)insertIntoData:(NSDictionary *)dict delegate:(UIViewController *)delegate;
@@ -14,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *title1;
 @property (weak, nonatomic) IBOutlet UILabel *title2;
 @property (weak, nonatomic) IBOutlet UILabel *content;
-
+@property (strong, nonatomic) VideoPlay *play;
 @end

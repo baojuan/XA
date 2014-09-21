@@ -27,8 +27,23 @@ static RecordPlay *gl_play = nil;
     return gl_play;
 }
 
-- (void) playWithName:(NSString *)name
+- (id)init
 {
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(PlayHasFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    }
+    return self;
+}
+
+- (void)PlayHasFinished:(NSNotification *)notification
+{
+    [self.delegate playFinished];
+}
+
+- (void) playWithName:(NSString *)name delegate:(id)delegate
+{
+    self.delegate = delegate;
     [self pause];
 
 

@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol RecordPlayDelegate <NSObject>
+
+- (void)playFinished;
+
+@end
+
 @interface RecordPlay : NSObject
 + (RecordPlay *)share;
-- (void) playWithName:(NSString *)name;
+@property (nonatomic, strong) id <RecordPlayDelegate>delegate;
+- (void) playWithName:(NSString *)name delegate:(id)delegate;
 - (void)playWithUrl:(NSString *)url;
 - (void)pause;
 

@@ -33,8 +33,6 @@ static NSInteger const baseTag = 100;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        self.tabBarItem.selectedImage = [UIImage imageNamed:@"tab1_S"];
     }
     return self;
 }
@@ -43,6 +41,10 @@ static NSInteger const baseTag = 100;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    
+    
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 10, 0, 10);
     [self.collectionView registerNib:[UINib nibWithNibName:@"CustomerCell" bundle:nil] forCellWithReuseIdentifier:@"CustomerCell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"AddCell" bundle:nil] forCellWithReuseIdentifier:@"AddCell"];
@@ -84,8 +86,10 @@ static NSInteger const baseTag = 100;
     }
     else {
         pushDict = _dataArray[indexPath.row];
+        
         self.tabBarController.hidesBottomBarWhenPushed = YES;
         [self performSegueWithIdentifier:@"CustomerMainController" sender:self];
+        [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     }
 }
 
@@ -190,6 +194,7 @@ static NSInteger const baseTag = 100;
     UIViewController *controller = segue.destinationViewController;
     controller.title = [NSString stringWithFormat:@"%@的主页",pushDict[@"name"]];
     ((CustomerMainController *)controller).customerDict = pushDict;
+    
 }
 
 @end

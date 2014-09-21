@@ -7,7 +7,6 @@
 //
 
 #import "UploadCell.h"
-#import "RecordPlay.h"
 
 @implementation UploadCell
 {
@@ -29,6 +28,9 @@
 {
     recordInfo = dict;
     NSDictionary *clientDict = dict[@"client_info"];
+    if ([clientDict count] == 0) {
+        return;
+    }
     [self.avatarImageView setImageWithURL:[NSURL URLWithString:clientDict[@"image"]] placeholderImage:[UIImage imageNamed:@"log_avatar"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         if (image == nil) {
             return ;
@@ -74,6 +76,11 @@
 }
 - (IBAction)uploadButtonClick:(UIButton *)sender {
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = @"上传中，请稍后";
+    hud.removeFromSuperViewOnHide = YES;
+
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);//获得存储路径，
     NSString *documentDirectory = [paths objectAtIndex:0];//获得路径的第0个元素
@@ -87,8 +94,18 @@
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         [self.delegate deleteDict:recordInfo];
+//        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+//        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"上传成功";
+//        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay:1];
+
     } failBlock:^{
-        ;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"上传失败";
+        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay:1];
     }];
     
     
@@ -132,13 +149,21 @@
 }
 
 - (IBAction)playButtonClick:(UIButton *)sender {
+    self.playImageView.image = IMAGENAMED(@"RadioStop");
+
     if ([recordInfo objectForKey:@"media_url"]) {
-        [[RecordPlay share] playWithName:recordInfo[@"media_url"]];
+        [[RecordPlay share] playWithName:recordInfo[@"media_url"] delegate:self];
     }
     else {
-        [[RecordPlay share] playWithName:recordInfo[@"record"]];
-
+        [[RecordPlay share] playWithName:recordInfo[@"record"] delegate:self];
+        
     }
     
+}
+
+- (void)playFinished
+{
+    self.playImageView.image = IMAGENAMED(@"upload_record");
+
 }
 @end

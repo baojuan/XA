@@ -20,7 +20,7 @@
     if (self) {
         // Custom initialization
         self.tabBarItem.selectedImage = [UIImage imageNamed:@"tab2_S"];
-
+        
     }
     return self;
 }
@@ -29,8 +29,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.avatar.layer.cornerRadius = 15;
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+
+    self.avatar.layer.cornerRadius = 60;
     self.avatar.layer.masksToBounds = YES;
+    
     self.avatar.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPicker)];
     [self.avatar addGestureRecognizer:tap];

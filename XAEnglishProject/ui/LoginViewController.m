@@ -151,4 +151,20 @@
     [[NSUserDefaults standardUserDefaults] setObject:@{@"saler_id": @"19"} forKey:@"saler_info"];
 }
 
+
+-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return [[UIApplication sharedApplication] statusBarOrientation];
+}
+
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeLeft|UIInterfaceOrientationMaskLandscapeRight;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+
 @end

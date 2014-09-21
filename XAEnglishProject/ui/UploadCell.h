@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RecordPlay.h"
 
 @protocol UploadCellDelegate <NSObject>
 
@@ -18,7 +19,8 @@
 
 @end
 
-@interface UploadCell : UICollectionViewCell<UIAlertViewDelegate>
+@interface UploadCell : UICollectionViewCell<UIAlertViewDelegate,RecordPlayDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *playImageView;
 @property (weak, nonatomic) id<UploadCellDelegate>delegate;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
 - (IBAction)rightButtonClick:(UIButton *)sender;

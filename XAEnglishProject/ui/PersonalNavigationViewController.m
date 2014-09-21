@@ -27,6 +27,21 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // UITabbarController里面的tabbarItem中的图片需要特殊API处理之后,才能正常显示
+    UIImage *img = [UIImage imageNamed:@"tab2"];
+    UIImage *img_selected = [UIImage imageNamed:@"tab2_S"];
+    // 设置图片 渲染 模式
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    // 设置图片 渲染 模式
+    img_selected = [img_selected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    // 构造方法生成 UITabBarItem
+    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"" image:img selectedImage:img_selected];
+    item.imageInsets = UIEdgeInsetsMake(0, -5, -10, -5);
+    // 设置当前控制器的 tabBarItem属性
+    self.tabBarItem = item;
+
 }
 
 - (void)didReceiveMemoryWarning

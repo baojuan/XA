@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "util/UrlRequest.m"
-            timestampString = "431280546.816382"
+            filePath = "ui/ImageForModel.m"
+            timestampString = "432878354.818879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "-urlRequestWithPostForRecordUrl:delegate:dict:finishBlock:failBlock:"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-insertIntoData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,29 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "util/UrlRequest.m"
-            timestampString = "431281175.397276"
+            filePath = "ui/DetailViewController.m"
+            timestampString = "432962874.673325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-urlRequestWithPostForRecordUrl:delegate:dict:finishBlock:failBlock:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ui/PersonalViewController.m"
-            timestampString = "431873063.207789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-uploadAvatarImage"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-addViews"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

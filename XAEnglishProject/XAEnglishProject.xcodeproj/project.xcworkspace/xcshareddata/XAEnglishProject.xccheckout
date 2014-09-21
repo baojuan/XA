@@ -10,29 +10,29 @@
 	<string>XAEnglishProject</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>265E6F73-D3D6-4353-97C2-A0D09E7FA555</key>
+		<key>902D651A0BB8BA6359243CE9D751ABBE0730BF3F</key>
 		<string>https://github.com/baojuan/XA.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>XAEnglishProject/XAEnglishProject.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>265E6F73-D3D6-4353-97C2-A0D09E7FA555</key>
+		<key>902D651A0BB8BA6359243CE9D751ABBE0730BF3F</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/baojuan/XA.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>265E6F73-D3D6-4353-97C2-A0D09E7FA555</string>
+	<string>902D651A0BB8BA6359243CE9D751ABBE0730BF3F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>265E6F73-D3D6-4353-97C2-A0D09E7FA555</string>
+			<string>902D651A0BB8BA6359243CE9D751ABBE0730BF3F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>XA</string>
 		</dict>

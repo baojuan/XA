@@ -20,5 +20,5 @@
 - (IBAction)allDeleteButtonClick:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editBarButton;
 - (IBAction)selectSegment:(UISegmentedControl *)sender;
-- (IBAction)editBarButtonClick:(UIButton *)sender;
+- (IBAction)editBarButtonClick:(UIBarButtonItem *)sender;
 @end

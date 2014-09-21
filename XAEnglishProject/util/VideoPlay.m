@@ -42,7 +42,7 @@
     }
     if ([fileManager fileExistsAtPath:[cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",[_name MD5Hash]]]]) {
         MPMoviePlayerViewController *playerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL fileURLWithPath:[cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",[_name MD5Hash]]]]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoFinished) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:_delegate selector:@selector(videoFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
 
         [_delegate presentMoviePlayerViewControllerAnimated:playerViewController];
         videoRequest = nil;
@@ -72,18 +72,22 @@
 }
 - (void)playVideo{
     MPMoviePlayerViewController *playerViewController =[[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://127.0.0.1:12345/%@.mp4",[_name MD5Hash]]]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoFinished) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:_delegate selector:@selector(videoFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
 
     [_delegate presentMoviePlayerViewControllerAnimated:playerViewController];
 }
 
-- (void)videoFinished
+- (void)videoFinish
 {
     if (videoRequest) {
         isPlay = !isPlay;
         [videoRequest clearDelegatesAndCancel];
         videoRequest = nil;
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
     }
+
 }
+
 
 @end
