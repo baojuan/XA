@@ -7,6 +7,8 @@
 //
 
 #import "VideoForModel.h"
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 @implementation VideoForModel
 {
     NSString *video;
@@ -35,12 +37,60 @@
     [self.imageView setImageWithURL:[NSURL URLWithString:dict[@"cover_img"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         self.imageView.image = image;
     }];
+    
+    
+    
+    
     self.title1.text = dict[@"field_one"];
     self.title2.text = dict[@"field_two"];
     self.content.text = dict[@"content"];
     video = dict[@"video"];
+//    self.imageView.image = [self getVideoPreViewImage:video];
+//    MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:video]];
+//    [mp requestThumbnailImagesAtTimes:@[[NSNumber numberWithFloat:0]] timeOption:MPMovieTimeOptionExact];
+//    
+//    
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(movieThumbnailLoadComplete:) name:MPMoviePlayerThumbnailImageRequestDidFinishNotification object:nil];
+    
+
+    
+    
     [self layoutSubviews];
 }
+
+
+-(void)movieThumbnailLoadComplete:(NSNotification*)notification{
+    
+    NSLog(@"userInfo:");
+    
+    NSDictionary *userInfo = [notification userInfo];
+    
+    
+    
+    NSNumber *timecode =[userInfo objectForKey: @"MPMoviePlayerThumbnailTimeKey"];
+    
+    UIImage *image =[userInfo objectForKey: @"MPMoviePlayerThumbnailImageKey"];
+    
+    
+    
+}
+
+- (UIImage*) getVideoPreViewImage:(NSString *)videoPath
+{
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:videoPath] options:nil];
+    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    gen.appliesPreferredTrackTransform = YES;
+    CMTime time = CMTimeMakeWithSeconds(0.0, 600);
+    NSError *error = nil;
+    CMTime actualTime;
+    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+    UIImage *img = [[UIImage alloc] initWithCGImage:image];
+    CGImageRelease(image);
+    return img;
+}
+
+
+
 
 - (void)tapGes
 {

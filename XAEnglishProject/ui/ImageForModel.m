@@ -22,7 +22,7 @@
 - (void)insertIntoData:(NSDictionary *)dict
 {
     __weak ImageForModel *weakSelf = self;
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView.contentMode = UIViewContentModeScaleToFill;
     __weak UIImageView *weakSelfImageView = self.imageView;
     [self.imageView setImageWithURL:[NSURL URLWithString:dict[@"pic_array"][0][@"image"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         if (image == nil) {
@@ -30,7 +30,8 @@
         }
         weakSelfImageView.image = image;
         CGRect rect = weakSelfImageView.frame;
-        rect.size.height = image.size.height / image.size.width * rect.size.width;
+        rect.size.width = 1000;
+        rect.size.height = image.size.height / image.size.width *rect.size.width;
         weakSelfImageView.frame = rect;
         self.contentSize = SIZE(rect.size.width, rect.size.height);
     }];
