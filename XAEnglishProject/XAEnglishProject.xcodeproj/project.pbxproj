@@ -463,7 +463,7 @@
 		BFC0071019A4FCA50048B7D8 /* upload_cellButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload_cellButton@2x.png"; sourceTree = "<group>"; };
 		BFC0071119A4FCA50048B7D8 /* upload_cellButtonSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload_cellButtonSelect@2x.png"; sourceTree = "<group>"; };
 		BFC0071219A4FCA50048B7D8 /* upload_record@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload_record@2x.png"; sourceTree = "<group>"; };
-		BFC81CB5198E94CB00AA2B3E /* 西岸英语.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "西岸英语.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC81CB5198E94CB00AA2B3E /* ACETOOL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACETOOL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC81CB8198E94CB00AA2B3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BFC81CBA198E94CB00AA2B3E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BFC81CBC198E94CB00AA2B3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -948,7 +948,7 @@
 		BFC81CB6198E94CB00AA2B3E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BFC81CB5198E94CB00AA2B3E /* 西岸英语.app */,
+				BFC81CB5198E94CB00AA2B3E /* ACETOOL.app */,
 				BFC81CD9198E94CB00AA2B3E /* XAEnglishProjectTests.xctest */,
 			);
 			name = Products;
@@ -1032,7 +1032,7 @@
 			);
 			name = XAEnglishProject;
 			productName = XAEnglishProject;
-			productReference = BFC81CB5198E94CB00AA2B3E /* 西岸英语.app */;
+			productReference = BFC81CB5198E94CB00AA2B3E /* ACETOOL.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BFC81CD8198E94CB00AA2B3E /* XAEnglishProjectTests */ = {
@@ -1409,7 +1409,7 @@
 				GCC_PREFIX_HEADER = "XAEnglishProject/XAEnglishProject-Prefix.pch";
 				INFOPLIST_FILE = "XAEnglishProject/XAEnglishProject-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "西岸英语";
+				PRODUCT_NAME = ACETOOL;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1423,7 +1423,7 @@
 				GCC_PREFIX_HEADER = "XAEnglishProject/XAEnglishProject-Prefix.pch";
 				INFOPLIST_FILE = "XAEnglishProject/XAEnglishProject-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "西岸英语";
+				PRODUCT_NAME = ACETOOL;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

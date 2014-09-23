@@ -179,7 +179,9 @@
     if (self.scrollView.contentOffset.x == 0) {
         return;
     }
-    self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x - SCREEN_HEIGHT, self.scrollView.contentOffset.y);
+    CGFloat width = MAX(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+
+    self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x - width, self.scrollView.contentOffset.y);
 }
 
 - (IBAction)playButtonClick:(UIButton *)sender {
@@ -243,7 +245,9 @@
         .scrollView.contentSize.width) {
         return;
     }
-    self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + SCREEN_HEIGHT, self.scrollView.contentOffset.y);
+    CGFloat width = MAX(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+
+    self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + width, self.scrollView.contentOffset.y);
 
 }
 

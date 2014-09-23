@@ -34,9 +34,13 @@
 - (void)insertIntoData:(NSDictionary *)dict delegate:(UIViewController *)delegate
 {
     _delegate = delegate;
-    [self.imageView setImageWithURL:[NSURL URLWithString:dict[@"cover_img"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-        self.imageView.image = image;
-    }];
+    NSArray *array = dict[@"pic_array"];
+    if ([array count] > 0) {
+        [self.imageView setImageWithURL:[NSURL URLWithString:dict[@"pic_array"][0][@"image"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            self.imageView.image = image;
+        }];
+    }
+    
     
     
     
