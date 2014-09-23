@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BFC81CB4198E94CB00AA2B3E"
-               BuildableName = "&#x897f;&#x5cb8;&#x82f1;&#x8bed;.app"
+               BuildableName = "ACETOOL.app"
                BlueprintName = "XAEnglishProject"
                ReferencedContainer = "container:XAEnglishProject.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFC81CB4198E94CB00AA2B3E"
-            BuildableName = "&#x897f;&#x5cb8;&#x82f1;&#x8bed;.app"
+            BuildableName = "ACETOOL.app"
             BlueprintName = "XAEnglishProject"
             ReferencedContainer = "container:XAEnglishProject.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFC81CB4198E94CB00AA2B3E"
-            BuildableName = "&#x897f;&#x5cb8;&#x82f1;&#x8bed;.app"
+            BuildableName = "ACETOOL.app"
             BlueprintName = "XAEnglishProject"
             ReferencedContainer = "container:XAEnglishProject.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFC81CB4198E94CB00AA2B3E"
-            BuildableName = "&#x897f;&#x5cb8;&#x82f1;&#x8bed;.app"
+            BuildableName = "ACETOOL.app"
             BlueprintName = "XAEnglishProject"
             ReferencedContainer = "container:XAEnglishProject.xcodeproj">
          </BuildableReference>

@@ -60,6 +60,7 @@
         return cell;
     }
     ModelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ModelCell" forIndexPath:indexPath];
+    
     [cell insertIntoData:self.dataArray[indexPath.row]];
     cell.rightButtom.hidden = YES;
     cell.selectButton.hidden = YES;

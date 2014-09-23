@@ -21,6 +21,13 @@
     }
     return self;
 }
+- (void)awakeFromNib
+{
+    self.modelImageView.layer.cornerRadius = 25;
+    self.modelImageView.layer.masksToBounds = YES;
+    self.rightButtom.layer.cornerRadius = 12;
+    self.rightButtom.layer.masksToBounds = YES;
+}
 
 - (void)insertIntoData:(NSDictionary *)dict
 {
