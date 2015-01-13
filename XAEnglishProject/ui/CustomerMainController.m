@@ -13,9 +13,12 @@
 #import "TopicModelViewController.h"
 #import "AssistModelViewController.h"
 #import "DetailViewController.h"
-@interface CustomerMainController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CustomerMainController ()<UICollectionViewDataSource, UICollectionViewDelegate,ModelCellDelegate>
+- (IBAction)editButtonClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSIndexPath *selectIndexPath;
+@property (nonatomic, strong) NSString *modelId;
 @end
 
 @implementation CustomerMainController
@@ -64,6 +67,8 @@
     [cell insertIntoData:self.dataArray[indexPath.row]];
     cell.rightButtom.hidden = YES;
     cell.selectButton.hidden = YES;
+    cell.editing = self.editing;
+    cell.delegate = self;
     return cell;
 }
 
@@ -161,5 +166,45 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)editButtonClick:(UIBarButtonItem *)sender {
+    if ([sender.title isEqualToString:@"编辑"]) {
+        sender.title = @"完成";
+        self.editing = YES;
+        [self.collectionView reloadData];
+    }
+    else {
+        sender.title = @"编辑";
+        self.editing = NO;
+        [self.collectionView reloadData];
+    }
+
+}
+
+- (void)cellDeleteModel:(NSString *)modelId
+{
+    self.modelId = modelId;
+    NSString *client_id = self.customerDict[@"id"];
+
+    UrlRequest *request = [[UrlRequest alloc] init];
+    [request urlRequestWithDeleteUrl:[NSString stringWithFormat:@"%@/api/module/%@/%@",HOST,modelId,client_id] delegate:self finishMethod:@"finishDeleteMethod:" failMethod:@"failDeleteMethod:"];
+}
+
+- (void)finishDeleteMethod:(NSData *)data
+{
+    NSArray *arr = [[NSMutableArray alloc] initWithArray:self.dataArray];
+    for (NSDictionary *dict in arr) {
+        if ([dict[@"id"] integerValue] == [_modelId integerValue]) {
+            [self.dataArray removeObject:dict];
+            break;
+        }
+    }
+    [self.collectionView reloadData];
+
+}
+- (void)failDeleteMethod:(NSError *)error
+{
+    
+}
 
 @end

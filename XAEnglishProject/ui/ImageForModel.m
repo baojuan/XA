@@ -24,7 +24,7 @@
     __weak ImageForModel *weakSelf = self;
     self.imageView.contentMode = UIViewContentModeScaleToFill;
     __weak UIImageView *weakSelfImageView = self.imageView;
-    [self.imageView setImageWithURL:[NSURL URLWithString:dict[@"pic_array"][0][@"image"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+    [self.imageView setImageWithURL:[NSURL URLWithString:dict[@"pic_array"][0][@"image"]] placeholderImage:[UIImage imageNamed:@""] options:SDWebImageLowPriority completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         NSLog(@"%@",dict[@"pic_array"][0][@"image"]);
         if (image == nil) {
             return ;

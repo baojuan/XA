@@ -73,6 +73,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [self videoFinished:nil];
     if ([recorder isRecording]) {
         [recorder stop];
     }
@@ -254,8 +255,12 @@
 
 - (void)videoFinished:(NSNotification *)notification
 {
-    VideoForModel *model = ((VideoForModel *)(viewArray[(int)(self.scrollView.contentOffset.x / self.scrollView.frame.size.width)])) ;
-    [model.play videoFinish];
+    int i = (int)(self.scrollView.contentOffset.x / self.scrollView.frame.size.width);
+    if (i < [viewArray count]) {
+        VideoForModel *model = ((VideoForModel *)(viewArray[i])) ;
+        [model.play videoFinish];
+    }
+    
 }
 
 

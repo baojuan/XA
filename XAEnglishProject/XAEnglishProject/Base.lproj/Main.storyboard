@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="xTG-pT-7rG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="xTG-pT-7rG">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Customer View Controller - 我的客户-->
+        <!--我的客户-->
         <scene sceneID="OAe-pR-ffm">
             <objects>
                 <viewController id="OD8-Nc-Sss" customClass="CustomerViewController" sceneMemberID="viewController">
@@ -21,7 +22,6 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="我的客户" id="h33-3U-uOc">
                         <barButtonItem key="leftBarButtonItem" title="编辑" style="done" id="fxz-6B-XIN">
@@ -70,12 +70,21 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="x1z-4p-YoB"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="x1z-4p-YoB">
+                        <barButtonItem key="rightBarButtonItem" title="编辑" style="done" id="QcC-0H-ibB">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="editButtonClick:" destination="Z8G-ZR-0zV" id="kuZ-Kc-2rj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="collectionView" destination="bXW-jl-yD7" id="GDj-pw-tv8"/>
+                        <outlet property="editButton" destination="QcC-0H-ibB" id="QVz-Wo-b1D"/>
                         <segue destination="vTI-20-01z" kind="push" identifier="TopicModelViewController" id="enI-uy-BUU"/>
                         <segue destination="cfd-br-yol" kind="push" identifier="AssistModelViewController" id="nfk-J9-xfe"/>
                         <segue destination="4v2-va-Tj6" kind="push" identifier="DetailViewController" id="h7b-3q-oc6"/>
@@ -85,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="2664" y="229"/>
         </scene>
-        <!--Topic Model View Controller - 主题模块-->
+        <!--主题模块-->
         <scene sceneID="NEI-BM-YUs">
             <objects>
                 <viewController id="vTI-20-01z" customClass="TopicModelViewController" sceneMemberID="viewController">
@@ -107,7 +116,6 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="主题模块" id="2wO-Px-1jy">
@@ -179,7 +187,6 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="wJ3-Nz-Nzy">
                         <nil key="title"/>
@@ -280,7 +287,6 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zd1-Wp-CNY">
                         <nil key="title"/>
@@ -317,7 +323,7 @@
             </objects>
             <point key="canvasLocation" x="2834" y="2184"/>
         </scene>
-        <!--Assist Model View Controller - 辅助模块-->
+        <!--辅助模块-->
         <scene sceneID="nte-md-E0E">
             <objects>
                 <viewController id="cfd-br-yol" customClass="AssistModelViewController" sceneMemberID="viewController">
@@ -343,11 +349,9 @@
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.94901960780000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="辅助模块" id="dIi-3F-Cwh">
@@ -367,7 +371,7 @@
             </objects>
             <point key="canvasLocation" x="3919" y="1340"/>
         </scene>
-        <!--Personal View Controller - 我的主页-->
+        <!--我的主页-->
         <scene sceneID="m99-E2-Zuc">
             <objects>
                 <viewController id="UUc-Vc-BNo" customClass="PersonalViewController" sceneMemberID="viewController">
@@ -450,7 +454,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="我的主页" id="ijl-jY-6om"/>
                     <connections>
@@ -507,7 +510,6 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>

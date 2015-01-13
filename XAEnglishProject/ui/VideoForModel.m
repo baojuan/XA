@@ -35,12 +35,9 @@
 {
     _delegate = delegate;
     
-    [self.imageView setImageWithURL:[NSURL URLWithString:dict[@"media_cover"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+    [self.imageView setImageWithURL:[NSURL URLWithString:dict[@"media_cover"]] placeholderImage:[UIImage imageNamed:@""] options:SDWebImageLowPriority completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         self.imageView.image = image;
     }];
-    
-    
-    
     
     
     self.title1.text = dict[@"field_one"];

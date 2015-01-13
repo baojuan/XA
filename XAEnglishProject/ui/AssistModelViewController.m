@@ -61,7 +61,14 @@
     cell.delegate = self;
     cell.selectButton.hidden = NO;
     cell.rightButtom.hidden = NO;
-    [cell insertIntoData:self.dataArray[indexPath.row]];
+    NSDictionary *dict = self.dataArray[indexPath.row];
+    if ([self.addArray containsObject:dict[@"id"]]) {
+        cell.rightButtom.selected = YES;
+    }
+    else {
+        cell.rightButtom.selected = NO;
+    }
+    [cell insertIntoData:dict];
     return cell;
 }
 

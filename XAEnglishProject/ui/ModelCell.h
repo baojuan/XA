@@ -12,6 +12,8 @@
 
 - (void)cellSelectedOrNot:(BOOL)state modelId:(NSString *)modelId;
 
+- (void)cellDeleteModel:(NSString *)modelId;
+
 @end
 
 @interface ModelCell : UICollectionViewCell
@@ -20,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *modelTitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *rightButtom;
 @property (weak, nonatomic) IBOutlet UIButton *selectButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (nonatomic, assign) BOOL editing;
+- (IBAction)deleteButtonClick:(id)sender;
 - (void)insertIntoData:(NSDictionary *)dict;
 - (IBAction)rightButtonClick:(UIButton *)sender;
 

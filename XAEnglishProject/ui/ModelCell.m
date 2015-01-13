@@ -27,6 +27,17 @@
     self.modelImageView.layer.masksToBounds = YES;
     self.rightButtom.layer.cornerRadius = 12;
     self.rightButtom.layer.masksToBounds = YES;
+    self.deleteButton.hidden = YES;
+}
+
+- (void)prepareForReuse
+{
+    self.deleteButton.hidden = YES;
+}
+- (IBAction)deleteButtonClick:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(cellDeleteModel:)]) {
+        [self.delegate cellDeleteModel:modelId];
+    }
 }
 
 - (void)insertIntoData:(NSDictionary *)dict
@@ -44,6 +55,12 @@
 - (IBAction)rightButtonClick:(UIButton *)sender {
     [self.delegate cellSelectedOrNot:self.rightButtom.selected modelId:modelId];
     self.rightButtom.selected = !self.rightButtom.selected;
+}
+
+- (void)setEditing:(BOOL)editing
+{
+    _deleteButton.hidden = !editing;
+    _editing = !_editing;
 }
 
 /*
